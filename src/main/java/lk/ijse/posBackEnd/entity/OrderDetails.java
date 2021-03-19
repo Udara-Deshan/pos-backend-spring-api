@@ -16,10 +16,12 @@ public class OrderDetails {
     @Id
     private String orderDetailsID;
     private int qty;
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "orderid", referencedColumnName = "orderid", nullable = false)
     private Orders orders;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "itemid", referencedColumnName = "itemid", nullable = false)
+    private Item item;
 
 
 }

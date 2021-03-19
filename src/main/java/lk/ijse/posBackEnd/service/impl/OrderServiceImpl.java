@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,15 +28,16 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     @Transactional
-    public void addOrder(OrderDTO dto) {
+    public String addOrder(OrderDTO dto) {
         if (!repo.existsById(dto.getOrderID())) {
             Orders orders = mapper.map(dto, Orders.class);
             repo.save(orders);
             for (OrderDetailsDTO orderDetailsDTO : dto.getOrderDetailsDTOS()) {
                 orderDetailsService.addOrderDetails(orderDetailsDTO);
             }
+            return "Order add Successfully..!";
         } else {
-            throw new RuntimeException("Order already exist..!");
+            return "Order already exist..!";
         }
     }
 

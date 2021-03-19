@@ -13,6 +13,7 @@ import javax.persistence.Id;
 public class OrderDetailsDTO {
     @Id
     private String orderDetailsID;
+    private String orderID;
     private String itemID;
     private int qty;
 }

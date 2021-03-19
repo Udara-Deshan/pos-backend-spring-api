@@ -19,6 +19,9 @@ public class Orders {
     private String orderID;
     private Date orderDate;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cusid", referencedColumnName = "cusid", nullable = false)
+    private Customer customer;
     @OneToMany(mappedBy = "orders",cascade= CascadeType.ALL)
     private List<OrderDetails> orderDetails=new ArrayList();
 }

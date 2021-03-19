@@ -19,7 +19,6 @@ public class ItemController {
 
     @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity addCustomer(@RequestBody ItemDTO dto) {
-        itemService.saveItem(dto);
         return new ResponseEntity(itemService.saveItem(dto), HttpStatus.OK);
     }
 
